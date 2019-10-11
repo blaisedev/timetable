@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,600" rel="stylesheet" type="text/css">
+        <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+        <link type="text/css" rel="stylesheet" href="style.css">
+        <title>TimeTable</title>
+    </head>
+    <body>
+        
+        <div class="top">
+            <div class="timetable">
+                <div class="timetable__title">
+                    Free Hours this week <span class="timetable__title--month">%Month%</span>:
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="bottom">
+            <div class="add">
+                <div class="add__container">
+                    <select class="add__day">
+                        <option value="mon" selected>Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thur">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select class="add__color">
+                        <option style="background-color:#FAEBD7" value="#FAEBD7" selected>&nbsp;</option>
+                        <option style="background-color:#FFB6C1" value="#FFB6C1">&nbsp;</option>
+                        <option style="background-color:#90EE90" value="#90EE90">&nbsp;</option>
+                        <option style="background-color:#B0C4DE" value="#B0C4DE">&nbsp;</option>
+                        <option style="background-color:#FAFAD2" value="#FAFAD2">&nbsp;</option>
+                        <option style="background-color:#FFDEAD" value="#FFDEAD">&nbsp;</option>
+                        <option style="background-color:#F5F5F5" value="#F5F5F5">&nbsp;</option>
+                        <option style="background-color:#FFFFFF" value="#FFFFFF">&nbsp;</option>
+                    </select>
+                    <input type="text" class="add__description" placeholder="Add description">
+                    <select class="add__hour" id="hourAdd">
+                        <option value="1"  selected>08:00 - 09:00</option>
+                        <option value="2">09:00 - 10:00</option>
+                        <option value="3">10:00 - 11:00</option>
+                        <option value="4">11:00 - 12:00</option>
+                        <option value="5">13:00 - 14:00</option>
+                        <option value="6">15:00 - 16:00</option>
+                        <option value="7">17:00 - 18:00</option>
+                        <option value="8">18:00 - 19:00</option>
+                        <option value="9">20:00 - 21:00</option>
+                        <option value="10">21:00 - 22:00</option>
+                        <option value="11">22:00 - 23:00</option>
+                        <option value="12">23:00 - 00:00</option>
+                    </select>
+                    <button class="add__btn"><i class="ion-ios-checkmark-outline"></i></button>
+                </div>
+            </div>
+            
+            <div class="container clearfix">
+
+                <div class="monday">
+                    <h2 class="monday__title">Monday</h2>
+                    <div class="monday__list" id="mon__list"></div>
+                </div>
+
+                <div class="tuesday">
+                    <h2 class="tuesday__title">Tuesday</h2>
+                    <div class="tuesday__list" id="tue__list">
+                    </div>
+                </div>
+
+                <div class="wednesday">
+                    <h2 class="wednesday__title">Wednesday</h2>
+                    <div class="wednesday__list" id="wed__list">
+                    </div>
+                </div>
+
+                <div class="thursday">
+                    <h2 class="thursday__title">Thursday</h2>
+                    <div class="thursday__list" id="thur__list">
+                    </div>
+                </div>
+
+                <div class="friday">
+                    <h2 class="friday__title">Friday</h2>
+                    <div class="friday__list" id="fri__list">
+                    </div>
+                </div>
+
+                <div class="saturday">
+                    <h2 class="saturday__title">Saturday</h2>
+                    <div class="saturday__list" id="sat__list">
+                    </div>
+                </div>
+
+                <div class="sunday">
+                    <h2 class="sunday__title">Sunday</h2>
+                    <div class="sunday__list" id="sun__list">
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+        
+        <script src="app.js"></script>
+    </body>
+</html>
