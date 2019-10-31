@@ -51,6 +51,20 @@ var timetableController = (function () {
             return newItem;
 
         },
+        deleteItem: function(type, id) {
+
+            var ids,  index;
+
+            ids = data.allItems[type].map(function(current) {
+                return current.id;
+            });
+
+            index = ids.indexOf(id);
+
+            if (index !== -1) {
+                data.allItems[type].splice(index, 1);
+            }
+        },
         testing: function () {
             console.log(data);
         }
@@ -74,7 +88,8 @@ var UIController = (function () {
         thursdayContainer: '.thursday__list',
         fridayContainer: '.friday__list',
         saturdayContainer: '.saturday__list',
-        sundayContainer: '.sunday__list'
+        sundayContainer: '.sunday__list',
+        container: '.container'
     };
 
 
@@ -116,7 +131,7 @@ var UIController = (function () {
 
             element = getElementFromDay(obj.day);
             // Create HTML String with placeholder text
-            html = '<div value="%value%" class="item clearfix" id="%id%"><div class="item__hour">%hour%</div><div class="right clearfix"><div class="item__description">%description%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+            html = '<div value="%value%" class="item clearfix" id="%id%"><div class="item__hour">%hour%</div><div class="right clearfix"><div class="item__description">%description%</div><div class="item__delete"><button class="item__delete--btn"><i class="fa fa-trash"></i></button></div></div></div>';
             // Replace the placehodler text with some actual data
             newHtml = html.replace('%id%', obj.day + "-" + obj.id);
             newHtml = newHtml.replace('%description%', obj.description);
@@ -141,6 +156,11 @@ var UIController = (function () {
                     });
             }
 
+        },
+        deleteListItem: function(selectorID) {
+
+            var el = document.getElementById(selectorID);
+            el.parentNode.removeChild(el);
         },
         clearFields: function () {
             var field;
@@ -176,6 +196,8 @@ var controller = (function (timetableCtrl, UICtrl) {
             document.querySelector('.add__color').style.backgroundColor = e.target.value;
         });
 
+        document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
+
     };
 
 
@@ -194,6 +216,22 @@ var controller = (function (timetableCtrl, UICtrl) {
         // 4. Clear the fields
         UICtrl.clearFields();
 
+    };
+
+    var ctrlDeleteItem = function() {
+
+        var itemID, splitID, type, ID;
+        itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
+
+        if (itemID) {
+            splitID = itemID.split('-');
+            type = splitID[0];
+            ID = parseInt(splitID[1]);
+        }
+
+        timetableCtrl.deleteItem(type, ID);
+
+        UICtrl.deleteListItem(itemID);
     };
 
     return {
